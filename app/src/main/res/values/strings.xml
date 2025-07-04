@@ -226,4 +226,6 @@
     <string name="all_taken">All taken (%s)</string>
     <string name="estimated_run_out_date">Estimated run out date</string>
     <string name="create_calendar_entry">Create calendar entry</string>
+    <string name="override_surface">Enable Surface Access</string>
+    <string name="override_surface_summary">Enable Surface Access Summary (extra permission required)</string>
 </resources>
