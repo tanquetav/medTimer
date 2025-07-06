@@ -51,6 +51,13 @@ class IntervalScheduling(
         if (plusSeconds.isAfter(limitEndHourInstant) && plusSeconds.isBefore(limitStartHourInstant)) {
             return limitStartHourInstant;
         }
+        val limitDayLocalTime = LocalDateTime.now().truncatedTo(ChronoUnit.DAYS);
+        val limitDayInstant= limitDayLocalTime.toInstant(timeAccess.systemZone().rules.getOffset(limitEndHourLocalTime));
+        val limitDayStartHourLocalTime = limitDayLocalTime.plusMinutes(reminder.startHour.toLong());
+        val limitDayStartHourInstant= limitDayStartHourLocalTime.toInstant(timeAccess.systemZone().rules.getOffset(limitEndHourLocalTime));
+        if (plusSeconds.isAfter(limitDayInstant) && plusSeconds.isBefore(limitDayStartHourInstant)) {
+            return limitDayStartHourInstant;
+        }
         return plusSeconds
     }
 
